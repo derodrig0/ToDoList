@@ -1,29 +1,41 @@
-import { useState } from 'react'
+import { useState } from "react";
+import "./App.css";
+import Todo from "./components/Todo";
+import TodoForm from "./components/TodoForm";
 
 function App() {
   const [todos, setTodos] = useState([
     {
       id: 1,
-      text: 'Criar funcionalidade x no sistema',
+      text: "Criar funcionalidade x no sistema",
       category: "Trabalho",
-      isCompleted: false
+      isCompleted: false,
     },
     {
       id: 2,
-      text: 'Ir para a academia',
+      text: "Ir para a academia",
       category: "Pessoal",
-      isCompleted: false
+      isCompleted: false,
     },
     {
       id: 3,
-      text: 'Estudar React',
+      text: "Estudar React",
       category: "Estudos",
-      isCompleted: false
+      isCompleted: false,
     },
-  ])
+  ]);
 
-  return <div>Olá React!</div>
-
+  return (
+    <div className="app">
+      <h1>Lista de Tarefas</h1>
+      <div className="todo-list">
+        {todos.map((todo) => (
+          <Todo todo={todo} />
+        ))}
+      </div>
+      <TodoForm />
+    </div>
+  );
 }
 
 export default App;

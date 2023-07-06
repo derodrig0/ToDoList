@@ -1,6 +1,7 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 
-const TodoForm = () => {
+const TodoForm = ({ addTodo }) => {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
 
@@ -8,8 +9,7 @@ const TodoForm = () => {
     e.preventDefault();
     if (!title || !category) return;
     // Adicionar Todo
-    
-
+    addTodo(title, category);
     // Limpar os campos
     setTitle("");
     setCategory("");
@@ -36,6 +36,10 @@ const TodoForm = () => {
       </form>
     </div>
   );
+};
+
+TodoForm.propTypes = {
+  addTodo: PropTypes.func
 };
 
 export default TodoForm;
